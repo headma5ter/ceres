@@ -18,7 +18,11 @@ class HumanReadableFormatter(logging.Formatter):
 
 class LogHandler:
     def __init__(
-        self, project_name: str, process_name: str, file_path: pathlib.Path = None, level: str = "DEBUG"
+        self,
+        project_name: str,
+        process_name: str,
+        file_path: pathlib.Path = None,
+        level: str = "DEBUG",
     ):
         self._project_name = project_name
         self._log_path = file_path
@@ -32,7 +36,7 @@ class LogHandler:
     @property
     def project_name(self) -> str:
         return self._project_name
-    
+
     @property
     def log_path(self) -> pathlib.Path:
         return self._log_path
@@ -46,7 +50,9 @@ class LogHandler:
         logger.setLevel(level)
         return logger
 
-    def set_handler(self, handler_name: str, handler_dest: (pathlib.Path, sys.stdout)) -> None:
+    def set_handler(
+        self, handler_name: str, handler_dest: (pathlib.Path, sys.stdout)
+    ) -> None:
         if isinstance(handler_dest, pathlib.Path):
             handler = logging.FileHandler(handler_dest)
         else:
